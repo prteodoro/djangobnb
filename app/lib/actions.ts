@@ -12,7 +12,7 @@ export async function handleLogin(userId: string, accessToken: string, refreshTo
         path: '/'
     })
 
-    cookieStore.set('session_access_Token', accessToken, {
+    cookieStore.set('session_access_token', accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 60, // 60 minutes
@@ -44,4 +44,12 @@ export async function getUserId() {
 
     const userId = cookieStore.get('session_userid')?.value
     return userId ? userId : null
+}
+
+export async function getAccessToken() {
+    const cookieStore = await cookies()
+
+    let accessToken = cookieStore.get('session_access_token')?.value
+
+    return accessToken
 }
