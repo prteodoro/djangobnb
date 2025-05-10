@@ -119,15 +119,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
 
     useEffect(() => {
         getProperties()
-    }, [
-        searchModal.query.country,
-        searchModal.query.guests,
-        searchModal.query.bathrooms,
-        searchModal.query.bedrooms,
-        searchModal.query.checkIn,
-        searchModal.query.checkOut,
-        searchModal.query.category
-    ])
+    }, [category, searchModal.query])
 
     return (
         <>
